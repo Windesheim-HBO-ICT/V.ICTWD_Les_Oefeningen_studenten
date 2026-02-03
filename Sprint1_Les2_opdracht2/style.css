@@ -12,3 +12,9 @@ header {
     height:50px;
     font-size:18pt;
 }
+
+img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
