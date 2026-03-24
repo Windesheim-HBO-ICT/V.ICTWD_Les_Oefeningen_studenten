@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>JavaScript Fetch API</h1>
+        <h2>De fetch() op endpoint: https://jsonplaceholder.typicode.com/users</h2>
+        <p id="log">fetch api</p>
+
+        <script>
+        showNames("https://jsonplaceholder.typicode.com/users");
+
+        async function showNames(url) {
+            const response = await fetch(url);
+            const data = await response.json();
+            let output = "<ul>";
+                data.forEach(element => {
+                output += `<li>${element.name}</li>`;
+            });
+            output += "</ul>";
+            document.getElementById("log").innerHTML = output;
+        }
+        </script>
+    </body>
+</html>
+
