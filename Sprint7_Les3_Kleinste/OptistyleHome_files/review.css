@@ -1,0 +1,174 @@
+﻿.reviews-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+    .reviews-section h2 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.6rem;
+    }
+
+.review-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+}
+
+    .review-link:focus-visible {
+        outline: 2px solid #555;
+        outline-offset: 3px;
+    }
+
+/* Slider area */
+.reviews {
+    list-style: none;
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+    position: relative;
+    min-height: 140px; /* hoogte van 1 kaart */
+    overflow: hidden;
+}
+
+.review {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 1rem 1.1rem;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+    opacity: 0;
+    transform: translateX(40px); /* richting: van rechts naar links */
+    display: grid;
+    align-content: start;
+    will-change: transform, opacity;
+}
+
+    .review .text {
+        margin: 0 0 0.6rem 0;
+        font-size: 1.05rem;
+    }
+
+    .review .meta {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        color: #444;
+    }
+
+/* CSS-only slideshow (3 items, 7s per item → 21s totaal) */
+.review {
+    animation: slideRL 21s infinite;
+}
+
+.reviews li:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.reviews li:nth-child(2) {
+    animation-delay: 7s;
+}
+
+.reviews li:nth-child(3) {
+    animation-delay: 14s;
+}
+
+@keyframes slideRL {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    6% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    36% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+.stars {
+    --size: 1.05rem;
+    display: inline-block;
+    position: relative;
+    font-size: var(--size);
+    line-height: 1;
+    letter-spacing: .1em;
+}
+
+.stars::before {
+    content: "★★★★★";
+    color: #ddd;
+}
+
+.stars::after {
+    content: "★★★★★";
+    color: #f5b301;
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.stars.r1::after {
+    width: 20%;
+}
+
+.stars.r2::after {
+    width: 40%;
+}
+
+.stars.r3::after {
+    width: 60%;
+}
+
+.stars.r4::after {
+    width: 80%;
+}
+
+.stars.r5::after {
+    width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .review {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        position: relative;
+        margin-bottom: .6rem;
+    }
+
+    .reviews {
+        min-height: auto;
+    }
+}
+
+.review-form {
+    max-width: 600px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    font-family: sans-serif;
+}
